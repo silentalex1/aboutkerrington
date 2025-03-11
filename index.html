@@ -13,7 +13,7 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa, #e8ecef);
+            background: linear-gradient(135deg, #f5f7fa, #e8ecef), url('https://www.transparenttextures.com/patterns/cubes.png');
             color: #333;
             line-height: 1.6;
             min-height: 100vh;
@@ -22,41 +22,60 @@
         }
         header {
             background: #003366;
-            padding: 20px 0;
+            padding: 30px 0;
             text-align: center;
             color: white;
-            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+            opacity: 0.2;
+            z-index: 0;
         }
         header h1 {
-            font-size: 38px;
+            font-size: 42px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: white;
             animation: fadeInDown 1s ease-in-out;
+            position: relative;
+            z-index: 1;
         }
         .container {
-            max-width: 900px;
-            margin: 70px auto;
+            max-width: 1000px;
+            margin: 80px auto;
             background: white;
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
             text-align: center;
             animation: fadeInUp 1s ease-in-out;
         }
         .profile-img {
-            width: 160px;
-            height: 160px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             margin-bottom: 40px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             object-fit: cover;
-            border: 3px solid #003366;
+            border: 4px solid #003366;
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
         }
         h1 {
             color: #003366;
-            font-size: 32px;
+            font-size: 34px;
             font-weight: 600;
             margin-bottom: 25px;
         }
@@ -65,108 +84,131 @@
             font-size: 16px;
             line-height: 1.8;
             margin-bottom: 30px;
-            max-width: 650px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
         .social-links {
-            margin: 45px 0;
+            margin: 50px 0;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
         }
         .social-links a {
             display: inline-block;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .social-links a:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
         .social-links img {
-            width: 60px;
-            height: 60px;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+            width: 65px;
+            height: 65px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
         }
         .contact-btn {
             display: inline-block;
-            padding: 12px 35px;
-            margin-top: 20px;
+            padding: 14px 40px;
+            margin-top: 25px;
             font-size: 18px;
             font-weight: 600;
             color: white;
             background: #003366;
             border: none;
-            border-radius: 35px;
+            border-radius: 40px;
             text-decoration: none;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
             transition: all 0.3s ease;
         }
         .contact-btn:hover {
             background: #004d99;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
         }
         .updates {
-            margin-top: 45px;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+            margin-top: 50px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
         .updates h2 {
             color: #003366;
-            font-size: 20px;
-            margin-bottom: 12px;
+            font-size: 22px;
+            margin-bottom: 15px;
         }
         .updates p {
             color: #777;
             font-size: 14px;
             line-height: 1.7;
         }
+        .gallery {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
         footer {
             margin-top: auto;
-            padding: 12px;
-            font-size: 12px;
+            padding: 15px;
+            font-size: 13px;
             color: #888;
             text-align: center;
             background: #f5f7fa;
             border-top: 1px solid #e0e4e8;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.02);
         }
         /* Animations */
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-12px); }
+            from { opacity: 0; transform: translateY(-15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(12px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
-                margin: 20px;
+                padding: 25px;
+                margin: 30px;
             }
             header h1 {
-                font-size: 28px;
+                font-size: 32px;
             }
             .profile-img {
-                width: 110px;
-                height: 110px;
+                width: 120px;
+                height: 120px;
             }
             .social-links img {
-                width: 45px;
-                height: 45px;
+                width: 50px;
+                height: 50px;
             }
             .contact-btn {
-                padding: 10px 25px;
+                padding: 12px 30px;
                 font-size: 16px;
             }
             .updates h2 {
-                font-size: 18px;
+                font-size: 20px;
+            }
+            .gallery img {
+                width: 150px;
+                height: 150px;
             }
         }
     </style>
@@ -177,14 +219,14 @@
     </header>
 
     <div class="container">
-        <img src="https://github.com/silentalex1/aboutkerrington/blob/main/kerrington.png" alt="Kerrington Profile" class="profile-img">
+        <img src="https://github.com/silentalex1/aboutkerrington/raw/main/kerrington.png" alt="Kerrington Profile" class="profile-img">
         <h1>About Me</h1>
         <p>I think having an online space for people to reach out will help me connect with others who might be interested in my work, whether that’s for advice, collaborations, or just to learn more. I’d like to highlight that I specialize in <strong>graphic design</strong>, and I’m passionate about <em>helping others build their creative businesses</em>.</p>
 
         <div class="social-links">
-            <a href="https://instagram.com/yourprofile" target="_blank"><img src="https://via.placeholder.com/60?text=IG" alt="Instagram"></a>
-            <a href="https://youtube.com/yourchannel" target="_blank"><img src="https://via.placeholder.com/60?text=YT" alt="YouTube"></a>
-            <a href="https://tiktok.com/@yourprofile" target="_blank"><img src="https://via.placeholder.com/60?text=TT" alt="TikTok"></a>
+            <a href="https://instagram.com/yourprofile" target="_blank"><img src="https://github.com/silentalex1/aboutkerrington/raw/main/instagram.png" alt="Instagram"></a>
+            <a href="https://youtube.com/yourchannel" target="_blank"><img src="https://github.com/silentalex1/aboutkerrington/raw/main/youtube.png" alt="YouTube"></a>
+            <a href="https://tiktok.com/@yourprofile" target="_blank"><img src="https://github.com/silentalex1/aboutkerrington/raw/main/tiktok.png" alt="TikTok"></a>
         </div>
         
         <a href="mailto:lkerrington08@gmail.com?subject=Contact Request" class="contact-btn" onclick="alert('Notification sent to Kerrington!');">Get in Touch</a>
@@ -194,6 +236,12 @@
             <p>[March 11, 2025] - Included expanded visual gallery and new about section.</p>
             <p>[March 11, 2025] - Streamlined design with additional visuals and cleaner layout.</p>
             <p>[March 11, 2025] - Removed visual gallery for a simpler design.</p>
+        </div>
+
+        <div class="gallery">
+            <img src="https://github.com/silentalex1/aboutkerrington/raw/main/kerrington.png" alt="Gallery Image 1">
+            <img src="https://github.com/silentalex1/aboutkerrington/raw/main/instagram.png" alt="Gallery Image 2">
+            <img src="https://github.com/silentalex1/aboutkerrington/raw/main/tiktok.png" alt="Gallery Image 3">
         </div>
     </div>
     
