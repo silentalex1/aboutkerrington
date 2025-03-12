@@ -22,67 +22,83 @@
         }
         header {
             background: #1e40af;
-            padding: 1rem;
+            padding: 1.2rem;
             text-align: center;
         }
         header h1 {
             color: #fff;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        header h1:hover {
+            color: #dbeafe;
         }
         .container {
-            max-width: 700px;
+            max-width: 850px;
             margin: 2rem auto;
-            padding: 1.5rem;
+            padding: 2rem;
             text-align: center;
         }
         .profile-img {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             border: 2px solid #1e40af;
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
         }
         h1 {
             color: #1e40af;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
         p {
             color: #555;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            max-width: 500px;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin: 1rem 0;
+            gap: 1.2rem;
+            margin: 1.2rem 0;
+        }
+        .social-links a {
+            transition: transform 0.3s ease;
+        }
+        .social-links a:hover {
+            transform: translateY(-3px);
         }
         .social-links img {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border-radius: 5px;
         }
         .contact-btn {
             display: inline-block;
-            padding: 0.6rem 1.5rem;
-            font-size: 0.95rem;
+            padding: 0.7rem 1.8rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #fff;
             background: #1e40af;
             border-radius: 20px;
             text-decoration: none;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
         .contact-btn:hover {
             background: #2b6cb0;
+            transform: translateY(-2px);
         }
         .phone-number {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #555;
             margin-top: 0.5rem;
         }
@@ -94,18 +110,18 @@
         }
         .updates h2 {
             color: #1e40af;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 0.5rem;
         }
         .updates p {
             color: #666;
-            font-size: 0.85rem;
-            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
         }
         footer {
             margin-top: auto;
             padding: 1rem;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #666;
             text-align: center;
             background: #f1f5f9;
