@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kerrington's Space</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,182 +12,124 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa, #e8ecef), url('https://www.transparenttextures.com/patterns/cubes.png');
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background: #fafafa;
+            color: #1e293b;
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
         header {
-            background: #003366;
-            padding: 30px 0;
+            background: #1e40af;
+            padding: 1.5rem;
             text-align: center;
             color: white;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
-            opacity: 0.2;
-            z-index: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         header h1 {
-            font-size: 42px;
+            font-size: 2rem;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: white;
-            animation: fadeInDown 1s ease-in-out;
-            position: relative;
-            z-index: 1;
+            letter-spacing: 0.5px;
         }
         .container {
-            max-width: 1000px;
-            margin: 80px auto;
+            max-width: 850px;
+            margin: 3rem auto;
             background: white;
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             text-align: center;
-            animation: fadeInUp 1s ease-in-out;
         }
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
-            margin-bottom: 40px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
             object-fit: cover;
-            border: 4px solid #003366;
+            border: 2px solid #1e40af;
             transition: transform 0.3s ease;
         }
         .profile-img:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
         h1 {
-            color: #003366;
-            font-size: 34px;
+            color: #1e40af;
+            font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 25px;
+            margin-bottom: 1rem;
         }
         p {
-            color: #666;
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            max-width: 700px;
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            max-width: 550px;
             margin-left: auto;
             margin-right: auto;
         }
         .social-links {
-            margin: 50px 0;
+            margin: 1.5rem 0;
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 1rem;
         }
         .social-links a {
-            display: inline-block;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
         .social-links a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
         }
         .social-links img {
-            width: 65px;
-            height: 65px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
         }
         .contact-btn {
             display: inline-block;
-            padding: 14px 40px;
-            margin-top: 25px;
-            font-size: 18px;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
             font-weight: 600;
             color: white;
-            background: #003366;
+            background: #1e40af;
             border: none;
-            border-radius: 40px;
+            border-radius: 9999px;
             text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
             transition: all 0.3s ease;
         }
         .contact-btn:hover {
-            background: #004d99;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+            background: #3b82f6;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .phone-number {
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+            color: #475569;
         }
         .updates {
-            margin-top: 50px;
-            padding: 20px;
-            background: #fafafa;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 10px;
         }
         .updates h2 {
-            color: #003366;
-            font-size: 22px;
-            margin-bottom: 15px;
+            color: #1e40af;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
         }
         .updates p {
-            color: #777;
-            font-size: 14px;
-            line-height: 1.7;
+            color: #64748b;
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
         footer {
             margin-top: auto;
-            padding: 15px;
-            font-size: 13px;
-            color: #888;
+            padding: 1rem;
+            font-size: 0.8rem;
+            color: #64748b;
             text-align: center;
-            background: #f5f7fa;
-            border-top: 1px solid #e0e4e8;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.02);
-        }
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 25px;
-                margin: 30px;
-            }
-            header h1 {
-                font-size: 32px;
-            }
-            .profile-img {
-                width: 120px;
-                height: 120px;
-            }
-            .social-links img {
-                width: 50px;
-                height: 50px;
-            }
-            .contact-btn {
-                padding: 12px 30px;
-                font-size: 16px;
-            }
-            .updates h2 {
-                font-size: 20px;
-            }
+            background: #f3f4f6;
+            border-top: 1px solid #e5e7eb;
         }
     </style>
 </head>
@@ -199,22 +141,24 @@
     <div class="container">
         <img src="https://github.com/silentalex1/aboutkerrington/raw/main/kerrington.png" alt="Kerrington Profile" class="profile-img">
         <h1>About Me</h1>
-        <p>I think having an online space for people to reach out will help me connect with others who might be interested in my work, whether that’s for advice, collaborations, or just to learn more. I’d like to highlight that I specialize in <strong>graphic design</strong>, and I’m passionate about <em>helping others build their creative businesses</em>.</p>
+        <p>I think having an online space for people to reach out will help me connect with others who might be interested in my work, whether that’s for advice, collaborations, or just to learn more. I specialize in <strong>graphic design</strong> and am passionate about <em>helping others build their creative businesses</em>.</p>
 
         <div class="social-links">
             <a href="https://youtube.com/@kerringtonleetapes?feature=shared" target="_blank"><img src="https://github.com/silentalex1/aboutkerrington/raw/main/instagram.png" alt="Instagram"></a>
-            <a href="https://www.instagram.com/kerrington_je_lee/profilecard/?igsh=MWQ5OGFwYzljanNjdw==%20" target="_blank"><img src="https://github.com/silentalex1/aboutkerrington/raw/main/youtube.png" alt="YouTube"></a>
+            <a href="https://www.instagram.com/kerrington_je_lee/profilecard/?igsh=MWQ5OGFwYzljanNjdw==" target="_blank"><img src="https://github.com/silentalex1/aboutkerrington/raw/main/youtube.png" alt="YouTube"></a>
             <a href="https://www.tiktok.com/@kplthe1st?_t=8qXtvYf5YZr&_r=1" target="_blank"><img src="https://github.com/silentalex1/aboutkerrington/raw/main/tiktok.png" alt="TikTok"></a>
         </div>
         
         <a href="mailto:lkerrington08@gmail.com?subject=Contact Request" class="contact-btn" onclick="alert('Notification sent to Kerrington!');">Get in Touch</a>
+        <div class="phone-number">(574) 326-2306</div>
 
         <div class="updates">
             <h2>Latest Updates</h2>
-            <p>[March 11, 2025] - Included expanded visual gallery and new about section.</p>
-            <p>[March 11, 2025] - Streamlined design with additional visuals and cleaner layout.</p>
-            <p>[March 11, 2025] - Removed visual gallery for a simpler design.</p>
-            <p>[March 11, 2025] - added the rest of the images website is completed.</p>
+            <p>[March 12, 2025] - added kerrington phone number onto website.</p>
+            <p>[March 11, 2025] - included expanded visual gallery and new about section.</p>
+            <p>[March 11, 2025] - streamlined design with additional visuals and cleaner layout.</p>
+            <p>[March 11, 2025] - removed visual gallery for a simpler design.</p>
+            <p>[March 11, 2025] - added the rest of the images; website is completed.</p>
             <p>[March 11, 2025] - kerrington app has been fully coded already.</p>
         </div>
     </div>
