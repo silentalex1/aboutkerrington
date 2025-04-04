@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kerrington's Space</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -10,6 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -21,10 +23,12 @@
             flex-direction: column;
             overflow-x: hidden;
             position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         body::before {
             content: '';
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -32,6 +36,7 @@
             background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.5), transparent 70%);
             z-index: -1;
             animation: glow 20s infinite;
+            will-change: opacity, transform;
         }
         @keyframes glow {
             0% { opacity: 0.6; transform: scale(1); }
@@ -50,7 +55,7 @@
         }
         header h1 {
             color: #fff;
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             font-weight: 700;
             text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -63,6 +68,7 @@
         }
         .container {
             max-width: 1000px;
+            width: 90%;
             margin: 4rem auto;
             padding: 3.5rem;
             text-align: center;
@@ -107,6 +113,7 @@
             box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             object-fit: cover;
+            will-change: transform, box-shadow;
         }
         .profile-img:hover {
             transform: scale(1.08) rotate(5deg);
@@ -131,7 +138,7 @@
         }
         h1 {
             color: #1e40af;
-            font-size: 2.3rem;
+            font-size: clamp(1.5rem, 4vw, 2.3rem);
             font-weight: 700;
             margin-bottom: 1.8rem;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -151,7 +158,7 @@
         }
         p {
             color: #444;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             margin-bottom: 2rem;
             max-width: 750px;
             margin-left: auto;
@@ -177,6 +184,7 @@
         .social-links a {
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
+            will-change: transform;
         }
         .social-links a:hover {
             transform: translateY(-8px) scale(1.15);
@@ -218,7 +226,7 @@
         .contact-btn {
             display: inline-block;
             padding: 1.2rem 2.5rem;
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 3vw, 1.25rem);
             font-weight: 600;
             color: #fff;
             background: linear-gradient(45deg, #1e40af, #3b82f6, #60a5fa);
@@ -231,6 +239,7 @@
             letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
+            will-change: transform, box-shadow;
         }
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
@@ -258,7 +267,7 @@
             opacity: 0.5;
         }
         .phone-number {
-            font-size: 1.15rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.15rem);
             color: #555;
             font-weight: 500;
             background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
@@ -307,6 +316,7 @@
             border: 1px solid rgba(255, 255, 255, 0.6);
             position: relative;
             overflow: hidden;
+            will-change: transform, box-shadow;
         }
         .updates::before {
             content: '';
@@ -324,7 +334,7 @@
         }
         .updates h2 {
             color: #1e40af;
-            font-size: 1.6rem;
+            font-size: clamp(1.2rem, 3.5vw, 1.6rem);
             font-weight: 600;
             margin-bottom: 1.5rem;
             position: relative;
@@ -425,31 +435,37 @@
                 margin: 2rem 1rem;
             }
             header h1 {
-                font-size: 2rem;
+                font-size: clamp(1.5rem, 4vw, 2rem);
             }
             .profile-img {
-                width: 150px;
-                height: 150px;
+                width: clamp(120px, 40vw, 150px);
+                height: clamp(120px, 40vw, 150px);
             }
-            h1 {
-                font-size: 1.8rem;
-            }
-            p {
-                font-size: 1.1rem;
+            .profile-glow {
+                width: clamp(140px, 45vw, 200px);
+                height: clamp(140px, 45vw, 200px);
             }
             .social-links {
                 gap: 1.5rem;
             }
             .social-links img {
-                width: 50px;
-                height: 50px;
+                width: clamp(40px, 12vw, 50px);
+                height: clamp(40px, 12vw, 50px);
             }
             .contact-btn {
                 padding: 1rem 2rem;
-                font-size: 1.1rem;
             }
             .updates {
                 padding: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            .contact-section {
+                gap: 1rem;
             }
         }
     </style>
@@ -461,32 +477,33 @@
     <div class="container">
         <div class="profile-section">
             <div class="profile-glow"></div>
-            <img src="https://github.com/silentalex1/aboutkerrington/raw/main/kerrington.png" alt="Kerrington Profile" class="profile-img">
+            <img src="https://github.com/silentalex1/aboutkerrington/raw/main/kerrington.png" alt="Kerrington Profile" class="profile-img" loading="lazy">
         </div>
         <h1>About Me</h1>
         <p>I think having an online space for people to reach out will help me connect with others who might be interested in my work, whether that's for advice, collaborations, or just to learn more. I specialize in <strong>graphic design</strong> and am passionate about <em>helping others build their creative businesses</em>.</p>
         <div class="social-links">
-            <a href="https://www.instagram.com/kerrington_je_lee/profilecard" target="_blank">
-                <img src="https://github.com/silentalex1/aboutkerrington/raw/main/instagram.png" alt="Instagram">
+            <a href="https://www.instagram.com/kerrington_je_lee/profilecard" target="_blank" rel="noopener noreferrer">
+                <img src="https://github.com/silentalex1/aboutkerrington/raw/main/instagram.png" alt="Instagram" loading="lazy">
             </a>
-            <a href="https://youtube.com/@kerringtonleetapes?feature=shared" target="_blank">
-                <img src="https://github.com/silentalex1/aboutkerrington/raw/main/youtube.png" alt="YouTube">
+            <a href="https://youtube.com/@kerringtonleetapes?feature=shared" target="_blank" rel="noopener noreferrer">
+                <img src="https://github.com/silentalex1/aboutkerrington/raw/main/youtube.png" alt="YouTube" loading="lazy">
             </a>
-            <a href="https://www.tiktok.com/@kplthe1st?_t=8qXtvYf5YZr&_r=1" target="_blank">
-                <img src="https://github.com/silentalex1/aboutkerrington/raw/main/tiktok.png" alt="TikTok">
+            <a href="https://www.tiktok.com/@kplthe1st?_t=8qXtvYf5YZr&_r=1" target="_blank" rel="noopener noreferrer">
+                <img src="https://github.com/silentalex1/aboutkerrington/raw/main/tiktok.png" alt="TikTok" loading="lazy">
             </a>
         </div>
         <div class="contact-section">
-            <a href="mailto:lkerrington08@gmail.com?subject=Contact Request" class="contact-btn" onclick="alert('Notification sent to Kerrington!');">Get in Touch</a>
+            <a href="mailto:lkerrington08@gmail.com?subject=Contact Request" class="contact-btn">Get in Touch</a>
             <div class="phone-number" onclick="copyPhoneNumber()">574-313-1648</div>
         </div>
         <div class="updates">
             <h2>Latest Updates</h2>
             <div class="updates-container">
                 <div class="update-item">
-                   p><span class="update-date">[April 4, 2025]</span> - improved the website UI design even more and made it more cleaner.</p>
+                    <p><span class="update-date">[April 4, 2025]</span> - improved the website UI design even more and made it more cleaner.</p>
                 </div>
-                   <p><span class="update-date">[March 31, 2025]</span> - made it so if you click the phone number of kerrington's it will be copied onto your clipboard.</p>
+                <div class="update-item">
+                    <p><span class="update-date">[March 31, 2025]</span> - made it so if you click the phone number of kerrington's it will be copied onto your clipboard.</p>
                 </div>
                 <div class="update-item">
                     <p><span class="update-date">[March 31, 2025]</span> - made the website looked more nicer, and more cleaner.</p>
@@ -522,18 +539,34 @@
     <script>
         function copyPhoneNumber() {
             const phoneNumber = "574-313-1648";
-            navigator.clipboard.writeText(phoneNumber).then(() => {
-                const phoneElement = document.querySelector('.phone-number');
-                phoneElement.textContent = "Copied!";
-                phoneElement.style.background = "linear-gradient(45deg, #93c5fd, #60a5fa)";
-                phoneElement.style.color = "#fff";
-                setTimeout(() => {
-                    phoneElement.textContent = phoneNumber;
-                    phoneElement.style.background = "linear-gradient(135deg, #e2e8f0, #f1f5f9)";
-                    phoneElement.style.color = "#555";
-                }, 1500);
-            });
+            navigator.clipboard.writeText(phoneNumber)
+                .then(() => {
+                    const phoneElement = document.querySelector('.phone-number');
+                    phoneElement.textContent = "Copied!";
+                    phoneElement.style.background = "linear-gradient(45deg, #93c5fd, #60a5fa)";
+                    phoneElement.style.color = "#fff";
+                    setTimeout(() => {
+                        phoneElement.textContent = phoneNumber;
+                        phoneElement.style.background = "linear-gradient(135deg, #e2e8f0, #f1f5f9)";
+                        phoneElement.style.color = "#555";
+                    }, 1500);
+                })
+                .catch(err => console.error('Failed to copy: ', err));
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.src = entry.target.src;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px 100px 0px' });
+            
+            images.forEach(img => observer.observe(img));
+        });
     </script>
 </body>
 </html>
