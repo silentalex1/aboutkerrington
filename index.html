@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kerrington's Space</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -29,7 +29,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.3), transparent 70%);
+            background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.5), transparent 70%);
             z-index: -1;
             animation: glow 20s infinite;
         }
@@ -39,38 +39,44 @@
             100% { opacity: 0.6; transform: scale(1); }
         }
         header {
-            background: linear-gradient(90deg, #1e40af, #60a5fa);
-            padding: 1.8rem;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+            padding: 2rem;
             text-align: center;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
             position: sticky;
             top: 0;
             z-index: 10;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
         }
         header h1 {
             color: #fff;
             font-size: 2.5rem;
             font-weight: 700;
             text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            letter-spacing: 1px;
         }
         header h1:hover {
             color: #dbeafe;
-            transform: scale(1.03);
+            transform: scale(1.05);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         .container {
-            max-width: 950px;
-            margin: 3.5rem auto;
-            padding: 3rem;
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 3.5rem;
             text-align: center;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(15px);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
         }
         .container::before {
             content: '';
@@ -79,132 +85,372 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(30, 64, 175, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(30, 64, 175, 0.08) 0%, transparent 70%);
             z-index: -1;
-            animation: pulse 12s infinite;
+            animation: pulse 15s infinite;
         }
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.2); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+        .profile-section {
+            position: relative;
+            margin-bottom: 3rem;
         }
         .profile-img {
-            width: 140px;
-            height: 140px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            margin-bottom: 1.8rem;
-            border: 5px solid #1e40af;
-            box-shadow: 0 8px 20px rgba(30, 64, 175, 0.25);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            margin-bottom: 2rem;
+            border: 6px solid #1e40af;
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            object-fit: cover;
         }
         .profile-img:hover {
-            transform: scale(1.1) rotate(3deg);
-            box-shadow: 0 12px 30px rgba(30, 64, 175, 0.35);
+            transform: scale(1.08) rotate(5deg);
+            box-shadow: 0 15px 35px rgba(30, 64, 175, 0.4);
+            border-color: #3b82f6;
+        }
+        .profile-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: profileGlow 6s infinite alternate;
+        }
+        @keyframes profileGlow {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            100% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.9; }
         }
         h1 {
             color: #1e40af;
-            font-size: 2rem;
+            font-size: 2.3rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: inline-block;
+        }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #93c5fd);
+            border-radius: 2px;
         }
         p {
             color: #444;
-            font-size: 1.1rem;
-            margin-bottom: 1.8rem;
-            max-width: 700px;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 750px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.9;
+            line-height: 2;
+            font-weight: 300;
+        }
+        p strong {
+            color: #1e40af;
+            font-weight: 600;
+        }
+        p em {
+            color: #3b82f6;
+            font-style: normal;
+            font-weight: 500;
         }
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.8rem;
-            margin: 2rem 0;
+            gap: 2.5rem;
+            margin: 3rem 0;
         }
         .social-links a {
-            transition: transform 0.4s ease, filter 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
         }
         .social-links a:hover {
-            transform: translateY(-6px) scale(1.15);
-            filter: brightness(1.3) drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+            transform: translateY(-8px) scale(1.15);
         }
         .social-links img {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover img {
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+        .social-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #93c5fd);
+            border-radius: 3px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover::after {
+            opacity: 1;
             width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .contact-section {
+            margin: 3rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
         }
         .contact-btn {
             display: inline-block;
-            padding: 1rem 2.2rem;
-            font-size: 1.2rem;
+            padding: 1.2rem 2.5rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: #fff;
-            background: linear-gradient(45deg, #1e40af, #93c5fd);
-            border-radius: 30px;
+            background: linear-gradient(45deg, #1e40af, #3b82f6, #60a5fa);
+            background-size: 200% 200%;
+            border-radius: 50px;
             text-decoration: none;
-            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.35);
-            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.35);
+            transition: all 0.4s ease;
+            animation: gradientShift 8s infinite;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         .contact-btn:hover {
-            background: linear-gradient(45deg, #2b6cb0, #bfdbfe);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.45);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(30, 64, 175, 0.5);
+        }
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+        .contact-btn:hover::before {
+            left: 100%;
+            opacity: 0.5;
         }
         .phone-number {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             color: #555;
-            margin-top: 1rem;
             font-weight: 500;
             background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
             display: inline-block;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
         }
         .phone-number:hover {
-            background: linear-gradient(135deg, #d1d9e6, #e5e9f2);
+            background: linear-gradient(135deg, #d1d9e6, #f8fafc);
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         .phone-number:active {
             transform: scale(0.95);
         }
+        .phone-number::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
+            transform: translateX(-100%);
+            top: 0;
+            left: 0;
+        }
+        .phone-number:hover::before {
+            animation: shimmer 1.5s infinite;
+        }
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
         .updates {
-            margin-top: 2.5rem;
-            padding: 2rem;
-            background: linear-gradient(135deg, #f8fafc, #e0e7ff);
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            margin-top: 3.5rem;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, #f8fafc, #eff6ff);
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+        .updates::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            border-radius: 0 24px 0 100%;
         }
         .updates:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
         }
         .updates h2 {
             color: #1e40af;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
         }
-        .updates p {
-            color: #666;
+        .updates h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #93c5fd);
+            border-radius: 2px;
+        }
+        .updates-container {
+            max-height: 350px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .updates-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .updates-container::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
+        .updates-container::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .updates-container::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .update-item {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 0.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(241, 245, 249, 0.6);
+            backdrop-filter: blur(5px);
+        }
+        .update-item:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+        }
+        .update-item p {
+            color: #555;
             font-size: 1rem;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0;
+            text-align: left;
+            line-height: 1.7;
+        }
+        .update-date {
+            color: #3b82f6;
+            font-weight: 600;
+            margin-right: 8px;
         }
         footer {
             margin-top: auto;
-            padding: 1.5rem;
-            font-size: 0.95rem;
-            color: #666;
+            padding: 2rem;
+            font-size: 1rem;
+            color: #555;
             text-align: center;
             background: linear-gradient(90deg, #e2e8f0, #f1f5f9);
-            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
             border-top: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa);
+        }
+        .footer-heart {
+            color: #ef4444;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+                margin: 2rem 1rem;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            p {
+                font-size: 1.1rem;
+            }
+            .social-links {
+                gap: 1.5rem;
+            }
+            .social-links img {
+                width: 50px;
+                height: 50px;
+            }
+            .contact-btn {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+            .updates {
+                padding: 1.8rem;
+            }
         }
     </style>
 </head>
@@ -213,9 +459,12 @@
         <h1>Welcome to Kerrington</h1>
     </header>
     <div class="container">
-        <img src="https://github.com/silentalex1/aboutkerrington/raw/main/kerrington.png" alt="Kerrington Profile" class="profile-img">
+        <div class="profile-section">
+            <div class="profile-glow"></div>
+            <img src="https://github.com/silentalex1/aboutkerrington/raw/main/kerrington.png" alt="Kerrington Profile" class="profile-img">
+        </div>
         <h1>About Me</h1>
-        <p>I think having an online space for people to reach out will help me connect with others who might be interested in my work, whether that’s for advice, collaborations, or just to learn more. I specialize in <strong>graphic design</strong> and am passionate about <em>helping others build their creative businesses</em>.</p>
+        <p>I think having an online space for people to reach out will help me connect with others who might be interested in my work, whether that's for advice, collaborations, or just to learn more. I specialize in <strong>graphic design</strong> and am passionate about <em>helping others build their creative businesses</em>.</p>
         <div class="social-links">
             <a href="https://www.instagram.com/kerrington_je_lee/profilecard" target="_blank">
                 <img src="https://github.com/silentalex1/aboutkerrington/raw/main/instagram.png" alt="Instagram">
@@ -227,23 +476,47 @@
                 <img src="https://github.com/silentalex1/aboutkerrington/raw/main/tiktok.png" alt="TikTok">
             </a>
         </div>
-        <a href="mailto:lkerrington08@gmail.com?subject=Contact Request" class="contact-btn" onclick="alert('Notification sent to Kerrington!');">Get in Touch</a>
-        <div class="phone-number" onclick="copyPhoneNumber()">574-313-1648</div>
+        <div class="contact-section">
+            <a href="mailto:lkerrington08@gmail.com?subject=Contact Request" class="contact-btn" onclick="alert('Notification sent to Kerrington!');">Get in Touch</a>
+            <div class="phone-number" onclick="copyPhoneNumber()">574-313-1648</div>
+        </div>
         <div class="updates">
             <h2>Latest Updates</h2>
-            <p>[March 31, 2025] - made it so if you click the phone number of kerrington's it will be copied onto your clipboard.</p>
-            <p>[March 31, 2025] - made the website looked more nicer, and more cleaner.</p>
-            <p>[March 16, 2025] - added kerrington fake phone number onto website.</p>
-            <p>[March 12, 2025] - added kerrington phone number onto website.</p>
-            <p>[March 11, 2025] - included expanded visual gallery and new about section.</p>
-            <p>[March 11, 2025] - streamlined design with additional visuals and cleaner layout.</p>
-            <p>[March 11, 2025] - removed visual gallery for a simpler design.</p>
-            <p>[March 11, 2025] - added the rest of the images; website is completed.</p>
-            <p>[March 11, 2025] - kerrington app has been fully coded already.</p>
+            <div class="updates-container">
+                <div class="update-item">
+                   p><span class="update-date">[April 4, 2025]</span> - improved the website UI design even more and made it more cleaner.</p>
+                </div>
+                   <p><span class="update-date">[March 31, 2025]</span> - made it so if you click the phone number of kerrington's it will be copied onto your clipboard.</p>
+                </div>
+                <div class="update-item">
+                    <p><span class="update-date">[March 31, 2025]</span> - made the website looked more nicer, and more cleaner.</p>
+                </div>
+                <div class="update-item">
+                    <p><span class="update-date">[March 16, 2025]</span> - added kerrington fake phone number onto website.</p>
+                </div>
+                <div class="update-item">
+                    <p><span class="update-date">[March 12, 2025]</span> - added kerrington phone number onto website.</p>
+                </div>
+                <div class="update-item">
+                    <p><span class="update-date">[March 11, 2025]</span> - included expanded visual gallery and new about section.</p>
+                </div>
+                <div class="update-item">
+                    <p><span class="update-date">[March 11, 2025]</span> - streamlined design with additional visuals and cleaner layout.</p>
+                </div>
+                <div class="update-item">
+                    <p><span class="update-date">[March 11, 2025]</span> - removed visual gallery for a simpler design.</p>
+                </div>
+                <div class="update-item">
+                    <p><span class="update-date">[March 11, 2025]</span> - added the rest of the images; website is completed.</p>
+                </div>
+                <div class="update-item">
+                    <p><span class="update-date">[March 11, 2025]</span> - kerrington app has been fully coded already.</p>
+                </div>
+            </div>
         </div>
     </div>
     <footer>
-        Crafted with ❤️ by Smart Script Studios | © 2025
+        Crafted with <span class="footer-heart">❤️</span> by Smart Script Studios | © 2025
     </footer>
 
     <script>
@@ -252,7 +525,7 @@
             navigator.clipboard.writeText(phoneNumber).then(() => {
                 const phoneElement = document.querySelector('.phone-number');
                 phoneElement.textContent = "Copied!";
-                phoneElement.style.background = "linear-gradient(135deg, #93c5fd, #60a5fa)";
+                phoneElement.style.background = "linear-gradient(45deg, #93c5fd, #60a5fa)";
                 phoneElement.style.color = "#fff";
                 setTimeout(() => {
                     phoneElement.textContent = phoneNumber;
